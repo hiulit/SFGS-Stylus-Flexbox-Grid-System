@@ -19,6 +19,7 @@ module.exports = function(grunt) {
             inline: true
           },
           compress: true,
+          "include css": true,
           use: [
             function() {
               return require('autoprefixer-stylus')('last 2 versions', 'ie 8-10');

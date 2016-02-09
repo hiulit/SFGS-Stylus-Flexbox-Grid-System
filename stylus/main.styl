@@ -1,1 +1,38 @@
-@import "variables"
+@import "base/variables"
+@import "utils/functions"
+@import "utils/mixins"
+@import "base/reset"
+
+if $normalize == "yes" or $normalize == true
+    @import "../node_modules/normalize.css/normalize.css"
+
+.row
+    display: flex
+    flex-wrap: wrap
+    margin: 0 -$grid-gutter-width
+    if $debug-mode == "on"
+        border: 1px solid red
+
+.col
+    flex: 1 1 0%
+    padding: $grid-gutter-width
+    padding-top: 0
+    if $debug-mode == "on"
+        border: 1px solid green
+        &:before
+            content: "auto"
+
+for $r in (1..$grid-columns)
+    .row--{$r}
+        > .col
+            flex-basis: percentage(1/$r)
+            max-width: percentage(1/$r)
+            if $debug-mode == "on"
+                &:before
+                    content: "" + $r
+    .col--{$r}
+        flex-basis: percentage(1/$r)
+        max-width: percentage(1/$r)
+        if $debug-mode == "on"
+            &:before
+                content: "" + $r

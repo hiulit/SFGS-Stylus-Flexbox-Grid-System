@@ -1,24 +1,27 @@
 @import "base/variables"
 @import "utils/functions"
 @import "utils/mixins"
-@import "base/reset"
 
 if $normalize == "yes" or $normalize == true
     @import "../node_modules/normalize.css/normalize.css"
 
+@import "base/reset"
+
 .row
     display: flex
     flex-wrap: wrap
-    margin: 0 -$grid-gutter-width
+    margin-bottom: $grid-gutter-width
+    margin-left: -($grid-gutter-width)
+    margin-right: -($grid-gutter-width)
     if $debug-mode == "on"
         border: 1px solid red
 
 .col
     flex: 1 1 0%
     padding: $grid-gutter-width
-    padding-top: 0
     if $debug-mode == "on"
-        border: 1px solid green
+        border: 1px solid darken(green, 10%)
+        background-color: green
         &:before
             content: "auto"
 

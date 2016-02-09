@@ -13,6 +13,7 @@ if $normalize == "yes" or $normalize == true
     margin-bottom: $grid-gutter-width
     margin-left: -($grid-gutter-width)
     margin-right: -($grid-gutter-width)
+
     if $debug-mode == "on"
         border: 1px solid red
 
@@ -29,13 +30,14 @@ for $r in (1..$grid-columns)
     .row--{$r}
         > .col
             flex-basis: percentage(1/$r)
-            // max-width: percentage(1/$r)
+
             if $debug-mode == "on"
                 &:before
                     content: "" + $r
+
     .col--{$r}
         flex-basis: percentage(1/$r)
-        max-width: percentage(1/$r)
+
         if $debug-mode == "on"
             &:before
                 content: "" + $r
@@ -45,6 +47,7 @@ for $key, $value in $breakpoints
         if $key is "md"
             .row
                 flex-direction: column
-                > .col
-                    flex-basis: 100%
+
+            .col
+                flex-basis: 100%
 

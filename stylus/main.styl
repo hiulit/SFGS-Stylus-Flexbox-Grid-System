@@ -29,7 +29,7 @@ for $r in (1..$grid-columns)
     .row--{$r}
         > .col
             flex-basis: percentage(1/$r)
-            max-width: percentage(1/$r)
+            // max-width: percentage(1/$r)
             if $debug-mode == "on"
                 &:before
                     content: "" + $r
@@ -39,3 +39,12 @@ for $r in (1..$grid-columns)
         if $debug-mode == "on"
             &:before
                 content: "" + $r
+
+for $key, $value in $breakpoints
+    @media screen and (max-width: $value)
+        if $key is "md"
+            .row
+                flex-direction: column
+                > .col
+                    flex-basis: 100%
+

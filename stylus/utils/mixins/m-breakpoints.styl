@@ -1,0 +1,9 @@
+// Remember that block mixins should be prefixed with "+" (e.g. "+m-breakpoints()")
+// http://stylus-lang.com/docs/mixins.html#block-mixins
+m-breakpoint($values)
+    if length($values) is 1
+        @media screen and (min-width: $breakpoints[$values[0]])
+            {block}
+    else
+        @media screen and (min-width: $breakpoints[$values[0]]) and (max-width: $breakpoints[$values[1]])
+            {block}

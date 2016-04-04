@@ -26,47 +26,70 @@ either a `<button>` or an `<a>` element:
     color: white;
 }
 
+// Row styles
 .row
     display: flex
+    flex-direction: column
     flex-wrap: wrap
-    margin-bottom: $grid-gutter-width
-    margin-left: -($grid-gutter-width)
-    margin-right: -($grid-gutter-width)
+    +m-breakpoint(md)
+        flex-direction: row
 
     if $debug-mode == "on"
         border: 1px solid red
 
+.row--row
+    flex-direction: row
+
+.row--center-v
+    align-items: center
+
+.row--center-h
+    margin-left: auto
+    margin-right: auto
+
+// Columns styles
 .col
-    flex: 1 1 0%
+    flex: 1 1 auto
     padding: $grid-gutter-width
+    position: relative
+    +m-breakpoint(md)
+        flex-basis: 0%
+    .row
+        .col
+            padding-bottom: 0
+            padding-top: 0
+
     if $debug-mode == "on"
         border: 1px solid darken(green, 10%)
         background-color: green
         &:before
             content: "auto"
 
-for $r in (1..$grid-columns)
-    .row--{$r}
-        > .col
-            flex-basis: percentage(1/$r)
+.col--text-right
+    text-align: right
 
-            if $debug-mode == "on"
-                &:before
-                    content: "" + $r
+.col--text-center
+    text-align: center
 
-    .col--{$r}
-        flex-basis: percentage(1/$r)
+.col--align-center
+    margin-left: auto
+    margin-right: auto
 
-        if $debug-mode == "on"
-            &:before
-                content: "" + $r
+.col--no-padding
+    padding: 0
+
+.col--align-bottom
+    align-self: flex-end
+
+.col--0
+    flex: 0
 
 for $key, $value in $breakpoints
-    @media screen and (max-width: $value)
-        if $key is "md"
-            .row
-                flex-direction: column
+    for $r in (1..$grid-columns)
+        @media screen and (min-width: $value)
+            .{$key}-{$r}
+                flex-basis: percentage($r/$grid-columns)
+                max-width: percentage($r/$grid-columns)
 
-            .col
-                flex-basis: 100%
-
+            .{$key}-o-{$r}
+                order: $r

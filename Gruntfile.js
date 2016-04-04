@@ -6,13 +6,18 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    clean: {
+      dist: [
+        "dist"
+      ]
+    },
     watch: {
       stylus: {
-        files: ['stylus/{,*/,**/}*.styl'],
+        files: ['src/sfgs/{,*/,**/}*.styl'],
         tasks: ['stylus:compile']
       },
       postcss: {
-        files: ['css/{,*/,**/}*.css'],
+        files: ['dist/sfgs/{,*/,**/}*.css'],
         tasks: ['postcss']
       }
     },
@@ -30,7 +35,20 @@ module.exports = function(grunt) {
             }
           ]
         },
-        files: {'css/main.css': 'stylus/main.styl'}
+        files: {'dist/sfgs/sfgs.css': 'src/sfgs/sfgs.styl'}
+      }
+    },
+    cssmin: {
+      dist: {
+        files: [
+          {
+             expand: true,
+             cwd: 'dist/sfgs',
+             src: ['*.css', '!*.min.css'],
+             dest: 'dist/sfgs',
+             ext: '.min.css'
+          }
+        ]
       }
     },
     postcss: {
@@ -42,19 +60,22 @@ module.exports = function(grunt) {
         ]
       },
       dist: {
-        src: 'css/{,*/,**/}*.css'
+        src: 'dist/sfgs/{,*/,**/}*.css'
       }
     }
   });
 
   grunt.registerTask('default', [
-    'stylus:compile',
+    'clean',
+    'stylus',
     'postcss',
     'watch'
   ]);
 
   grunt.registerTask('build', [
-    'stylus:compile',
+    'clean',
+    'stylus',
+    'cssmin',
     'postcss',
   ]);
 

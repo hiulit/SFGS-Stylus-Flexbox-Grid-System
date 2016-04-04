@@ -1,11 +1,27 @@
-@import "base/variables"
-@import "utils/functions"
-@import "utils/mixins"
+@import "config"
+@import "functions"
+@import "mixins/*"
 
-if $normalize == "yes" or $normalize == true
+if $normalize is "yay" or $normalize is true
     @import "../node_modules/normalize.css/normalize.css"
 
-@import "base/reset"
+if $sfgs-reset is "yay" or $sfgs-reset is true
+    html
+      box-sizing: border-box
+
+    *,
+    *:before,
+    *:after
+      box-sizing: inherit
+
+    body
+        margin: 0
+        margin-left: auto
+        margin-right: auto
+        max-width: $grid-max-width
+        padding: 0
+        padding-left: $grid-gutter-width
+        padding-right: $grid-gutter-width
 
 /*---
 title:   Buttons

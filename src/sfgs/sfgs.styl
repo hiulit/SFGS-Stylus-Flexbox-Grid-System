@@ -50,7 +50,7 @@ either a `<button>` or an `<a>` element:
     +m-breakpoint(md)
         flex-direction: row
 
-    if $debug-mode == "on"
+    if $debug-mode is "on"
         border: 1px solid red
 
 .row--row
@@ -75,7 +75,7 @@ either a `<button>` or an `<a>` element:
             padding-bottom: 0
             padding-top: 0
 
-    if $debug-mode == "on"
+    if $debug-mode is "on"
         border: 1px solid darken(green, 10%)
         background-color: green
         &:before
@@ -106,6 +106,10 @@ for $key, $value in $breakpoints
             .{$key}-{$r}
                 flex-basis: percentage($r/$grid-columns)
                 max-width: percentage($r/$grid-columns)
+
+                if $debug-mode is "on"
+                    &:before
+                        content: "" + $r
 
             .{$key}-o-{$r}
                 order: $r

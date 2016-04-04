@@ -14,7 +14,7 @@ module.exports = function(grunt) {
     watch: {
       stylus: {
         files: ['src/sfgs/{,*/,**/}*.styl'],
-        tasks: ['stylus:compile']
+        tasks: ['stylus']
       },
       postcss: {
         files: ['dist/sfgs/{,*/,**/}*.css'],

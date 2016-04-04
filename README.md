@@ -1,10 +1,10 @@
-# Stylus Flexbox Grid System
+# SFGS (Stylus Flexbox Grid System)
 
 ## Installation
 
 You can:
 
-* Clone the repository `git clone git@github.com:hiulit/Stylus-Flexbox-Grid-System.git`
+* Clone the repository `git clone git@github.com:hiulit/SFGS-Stylus-Flexbox-Grid-System.git`
 * [Download the ZIP](https://github.com/hiulit/Stylus-Flexbox-Grid-System/archive/master.zip).
 
 

@@ -6,7 +6,10 @@
     "grunt": "^0.4.5",
     "grunt-contrib-stylus": "^1.0.0",
     "grunt-contrib-watch": "^0.6.1",
-    "load-grunt-tasks": "^3.4.0"
+    "grunt-postcss": "^0.7.2",
+    "load-grunt-tasks": "^3.4.0",
+    "mdcss": "^1.5.1",
+    "mdcss-theme-github": "^2.2.0"
   },
   "dependencies": {
     "normalize.css": "^3.0.3"

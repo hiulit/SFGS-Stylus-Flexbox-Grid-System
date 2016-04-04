@@ -10,6 +10,10 @@ module.exports = function(grunt) {
       stylus: {
         files: ['stylus/{,*/,**/}*.styl'],
         tasks: ['stylus:compile']
+      },
+      postcss: {
+        files: ['css/{,*/,**/}*.css'],
+        tasks: ['postcss']
       }
     },
     stylus: {
@@ -18,7 +22,7 @@ module.exports = function(grunt) {
           sourcemap: {
             inline: true
           },
-          compress: true,
+          compress: false,
           "include css": true,
           use: [
             function() {
@@ -28,11 +32,24 @@ module.exports = function(grunt) {
         },
         files: {'css/main.css': 'stylus/main.styl'}
       }
+    },
+    postcss: {
+      options: {
+        processors: [
+          require('mdcss')({
+            theme: require('mdcss-theme-github')({/*options*/})
+          })
+        ]
+      },
+      dist: {
+        src: 'css/{,*/,**/}*.css'
+      }
     }
   });
 
   grunt.registerTask('default', [
     'stylus:compile',
+    'postcss',
     'watch'
   ]);
 

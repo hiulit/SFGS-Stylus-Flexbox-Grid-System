@@ -15,10 +15,6 @@ module.exports = function(grunt) {
       stylus: {
         files: ['src/sfgs/{,*/,**/}*.styl'],
         tasks: ['stylus']
-      },
-      postcss: {
-        files: ['dist/sfgs/{,*/,**/}*.css'],
-        tasks: ['postcss']
       }
     },
     stylus: {
@@ -50,25 +46,12 @@ module.exports = function(grunt) {
           }
         ]
       }
-    },
-    postcss: {
-      options: {
-        processors: [
-          require('mdcss')({
-            theme: require('mdcss-theme-github')({/*options*/})
-          })
-        ]
-      },
-      dist: {
-        src: 'dist/sfgs/{,*/,**/}*.css'
-      }
     }
   });
 
   grunt.registerTask('default', [
     'clean',
     'stylus',
-    'postcss',
     'watch'
   ]);
 
@@ -76,7 +59,6 @@ module.exports = function(grunt) {
     'clean',
     'stylus',
     'cssmin',
-    'postcss',
   ]);
 
 };

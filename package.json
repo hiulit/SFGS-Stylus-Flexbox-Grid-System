@@ -9,9 +9,7 @@
     "grunt-contrib-stylus": "^1.2.0",
     "grunt-contrib-watch": "^1.0.0",
     "grunt-postcss": "^0.8.0",
-    "load-grunt-tasks": "^3.4.1",
-    "mdcss": "^1.5.1",
-    "mdcss-theme-github": "^2.2.0"
+    "load-grunt-tasks": "^3.4.1"
   },
   "dependencies": {
     "normalize.css": "^4.0.0"
